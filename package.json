@@ -1,0 +1,14 @@
+{
+  "name": "colored_ender_chests",
+  "version": "1.0.0",
+  "description": "Scripts for the pack",
+  "main": "update-deps.js",
+  "scripts": {
+    "test": "node ./update-deps.js"
+  },
+  "author": "AmericanBagel",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "node-zip": "^1.0.1"
+  }
+}
