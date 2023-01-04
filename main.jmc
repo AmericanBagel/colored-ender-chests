@@ -1,3 +1,5 @@
+// Invisible Minecarts
+// (TODO: Remove)
 function invisible_minecarts() {
     data merge entity @s[type=minecart] {CustomDisplayTile:1,DisplayState:{Name:"minecraft:command_block",Properties:{conditional:"true",facing:"down"}},DisplayOffset:4}
     data merge entity @s[type=chest_minecart] {CustomDisplayTile:1,DisplayState:{Name:"minecraft:command_block",Properties:{conditional:"true",facing:"up"}},DisplayOffset:4}
@@ -16,6 +18,10 @@ new tags.entity_types(minecraft.minecarts) {
     "minecraft:hopper_minecart"
   ]
 }
+
+
+
+
 
 class give {
     function ender_chest() {

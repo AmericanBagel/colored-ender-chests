@@ -1,0 +1,5 @@
+#static "../minecraft"
+#static "../qcb"
+#static "../rx.playerdb"
+#static "../iris"
+#static "../load"

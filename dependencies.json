@@ -1,0 +1,27 @@
+{
+  "namespaces": [
+    "colored_ender_chests",
+    "minecraft"
+  ],
+  "dependencies": [
+    {
+      "name": "QCB",
+      "url": "https://github.com/Ellivers/QCB/releases/download/v1.0.0/QCB-Mergeable-DataPack.zip"
+    },
+    {
+      "name": "PlayerDB",
+      "url": "https://github.com/rx-modules/PlayerDB/releases/download/v2.0.2/PlayerDB.v2.0.2.zip"
+    },
+    {
+      "name": "Iris",
+      "url": "https://github.com/Aeldrion/Iris/zipball/main"
+    }
+  ],
+  "append_function_tags": [
+    {
+      "tag": "load:load",
+      "value": "colored_ender_chests:load"
+    }
+  ],
+  "version":"v1.0"
+}
