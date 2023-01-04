@@ -1,1 +1,0 @@
-execute as @e[type=#minecraft:minecarts,tag=!invisible_minecart] run function colored_ender_chests:invisible_minecarts

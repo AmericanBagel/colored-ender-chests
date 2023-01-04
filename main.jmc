@@ -19,9 +19,7 @@ new tags.entity_types(minecraft.minecarts) {
   ]
 }
 
-
-
-
+// Ender Chest
 
 class give {
     function ender_chest() {
