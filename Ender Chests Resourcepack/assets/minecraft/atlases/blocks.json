@@ -1,0 +1,12 @@
+{
+    "sources": [
+        {
+            "type": "single",
+            "resource": "minecraft:entity/chest/normal"
+        },
+        {
+            "type": "single",
+            "resource": "minecraft:entity/end_portal"
+        }
+    ]
+}
