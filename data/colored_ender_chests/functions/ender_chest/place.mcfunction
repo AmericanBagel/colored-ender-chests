@@ -1,0 +1,1 @@
+playsound block.stone.place block @a ~ ~ ~ 1

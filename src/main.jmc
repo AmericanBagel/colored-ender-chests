@@ -1,53 +1,6 @@
 @import "src/functions/*";
 
 /////// Ender Chest
-// Colored ender chest recipe with knowledge book
-new recipes(ender_chest) {
-    "type": "minecraft:crafting_shaped",
-    "pattern": [
-        "/W/",
-        "O#O",
-        "/E/"
-    ],
-    "key": {
-        "/": {
-            "item": "minecraft:blaze_rod"
-        },
-        "W": {
-            "tag": "minecraft:wool"
-        },
-        "O": {
-            "item": "minecraft:obsidian"
-        },
-        "#": {
-            "item": "minecraft:ender_chest"
-        },
-        "E": {
-            "item": "minecraft:end_crystal"
-        }
-    },
-    "result": {
-        "item": "minecraft:knowledge_book",
-        "count": 1
-    }
-}
-
-// Advancement which detects crafting knowledge book for colored ender chest
-new advancements(ender_chest.craft) {
-	"criteria": {
-		"recipe": {
-			"trigger": "minecraft:recipe_unlocked",
-			"conditions": {
-				"recipe": "colored_ender_chests:ender_chest"
-				
-			}
-		}
-	},
-	"rewards": {
-		"function": "colored_ender_chests:ender_chest/craft"
-    }
-}
-
 Item.create(
     ender_chest,
     item_frame,
@@ -80,19 +33,49 @@ Item.create(
 
 );
 
-class ender_chest {
-    // Reward function called by advancement ender_chest.craft upon crafting knowledge book for ender chest
-    function craft() {
+Recipe.table(
+    {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+            "/W/",
+            "O#O",
+            "/E/"
+        ],
+        "key": {
+            "/": {
+                "item": "minecraft:blaze_rod"
+            },
+            "W": {
+                "tag": "minecraft:wool"
+            },
+            "O": {
+                "item": "minecraft:obsidian"
+            },
+            "#": {
+                "item": "minecraft:ender_chest"
+            },
+            "E": {
+                "item": "minecraft:end_crystal"
+            }
+        },
+        "result": {
+            "item": "minecraft:knowledge_book",
+            "count": 1
+        }
+    },
+    knowledge_book,
+    () => {
         Item.give(ender_chest, @s, 1);
         advancement revoke @s from colored_ender_chests:ender_chest/craft;
         recipe take @s colored_ender_chests:ender_chest;
         clear @s knowledge_book 1;
     }
+);
 
+class ender_chest {
     // Run in __tick__ as item frame
     function place() {
-        playsound block.stone.place block @a ~ ~ ~ 1
-        summon 
+        playsound block.stone.place block @a ~ ~ ~ 1;
     }
 }
 
