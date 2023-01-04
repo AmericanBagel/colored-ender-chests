@@ -1,0 +1,13 @@
+{
+  "criteria": {
+    "recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "colored_ender_chests:ender_chest"
+      }
+    }
+  },
+  "rewards": {
+    "function": "colored_ender_chests:ender_chest/craft"
+  }
+}

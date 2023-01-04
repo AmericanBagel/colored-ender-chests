@@ -2,6 +2,6 @@
   "namespace": "colored_ender_chests",
   "description": "Testing the power of JMC",
   "pack_format": "12",
-  "target": "/home/bagel/.minecraft/saves/Bagels Bestiary/datapacks/JMC/main.jmc",
-  "output": "/home/bagel/.minecraft/saves/Bagels Bestiary/datapacks/JMC/"
+  "target": "./src/main.jmc",
+  "output": "./"
 }

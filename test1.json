@@ -1,0 +1,29 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "/W/",
+        "O#O",
+        "/E/"
+    ],
+    "key": {
+        "/": {
+            "item": "minecraft:blaze_rod"
+        },
+        "W": {
+            "tag": "minecraft:wool"
+        },
+        "O": {
+            "item": "minecraft:obsidian"
+        },
+        "#": {
+            "item": "minecraft:ender_chest"
+        },
+        "E": {
+            "item": "minecraft:end_crystal"
+        }
+    },
+    "result": {
+        "item": "minecraft:knowledge_book",
+        "count": 1
+    }
+}

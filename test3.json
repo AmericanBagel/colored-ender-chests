@@ -1,0 +1,14 @@
+{
+	"criteria": {
+		"recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "test:test1"
+				
+			}
+		}
+	},
+	"rewards": {
+		"function": "test:test2"
+	}
+}
