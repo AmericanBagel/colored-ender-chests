@@ -1,0 +1,2 @@
+execute if score $cy __variable__ matches 6501.. if score $cy __variable__ matches ..7598 run function colored_ender_chests:__private__/if_else/6
+execute if score __if_else__ __variable__ matches 0 run function colored_ender_chests:__private__/if_else/7

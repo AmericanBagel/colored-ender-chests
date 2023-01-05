@@ -1,5 +1,7 @@
 @import "src/functions/*";
 
+scoreboard objectives add colored_ender_chests.global dummy;
+
 /////// Ender Chest
 Item.create(
     ender_chest,
@@ -72,23 +74,24 @@ Recipe.table(
     }
 );
 
-new tags.item(dye) {
+new tags.items(dye) {
     "values": [
         "minecraft:white_dye",
-        "minecraft:light_gray_dye",
-        "minecraft:gray_dye",
-        "minecraft:black_dye",
-        "minecraft:brown_dye",
-        "minecraft:red_dye",
+        "minecraft:orange_dye",
+        "minecraft:magenta_dye",
+        "minecraft:light_blue_dye",
         "minecraft:yellow_dye",
         "minecraft:lime_dye",
-        "minecraft:green_dye",
+        "minecraft:pink_dye",
+        "minecraft:gray_dye",
+        "minecraft:light_gray_dye",
         "minecraft:cyan_dye",
-        "minecraft:light_blue_dye",
-        "minecraft:blue_dye",
         "minecraft:purple_dye",
-        "minecraft:magenta_dye",
-        "minecraft:pink_dye"
+        "minecraft:blue_dye",
+        "minecraft:brown_dye",
+        "minecraft:green_dye",
+        "minecraft:red_dye",
+        "minecraft:black_dye"
     ]
 }
 
@@ -112,6 +115,30 @@ new loot_tables(ender_chest) {
   ]
 }
 
+new predicates(dye_in_offhand) {
+  "condition": "minecraft:entity_properties",
+  "entity": "this",
+  "predicate": {
+    "equipment": {
+      "offhand": {
+        "tag": "colored_ender_chests:dye"
+      }
+    }
+  }
+}
+
+new predicates(dye_in_mainhand) {
+  "condition": "minecraft:entity_properties",
+  "entity": "this",
+  "predicate": {
+    "equipment": {
+      "mainhand": {
+        "tag": "colored_ender_chests:dye"
+      }
+    }
+  }
+}
+
 class ender_chest {
     // Run in __tick__ as item frame
     function place() {
@@ -119,6 +146,8 @@ class ender_chest {
             playsound block.stone.place block @a ~ ~ ~ 1 0.8;
             summon armor_stand ~ ~1 ~ {
                 Tags: [
+                    "colored_ender_chests",
+                    "colored_ender_chests.ender_chest",
                     "colored_ender_chests.ender_chest.marker"
                 ],
                 Pose: {Head:[0f,0f,0f]},
@@ -148,9 +177,86 @@ class ender_chest {
         kill @s;
     }
 
+    function check_for_dye() {
+        // For efficiency, start by checking if player has dye in either offhand or mainhand (with a preference for offhand for right-clicking). We don't need to do expensive, semi-accurate raycasting if the player isn't even holding dye.
+        if ( predicate colored_ender_chests:dye_in_offhand ) {
+            $hand = 0;
+
+            // Assign $dyeId for each dye, sorted by order in Creative inventory
+            JMC.put('execute if data entity @s Inventory[{Slot:-106b,id:"minecraft:white_dye"}] run scoreboard players set $dyeId __variable__ 0');
+            JMC.put('execute if data entity @s Inventory[{Slot:-106b,id:"minecraft:orange_dye"}] run scoreboard players set $dyeId __variable__ 1');
+            JMC.put('execute if data entity @s Inventory[{Slot:-106b,id:"minecraft:magenta_dye"}] run scoreboard players set $dyeId __variable__ 2');
+            JMC.put('execute if data entity @s Inventory[{Slot:-106b,id:"minecraft:light_blue_dye"}] run scoreboard players set $dyeId __variable__ 3');
+            JMC.put('execute if data entity @s Inventory[{Slot:-106b,id:"minecraft:yellow_dye"}] run scoreboard players set $dyeId __variable__ 4');
+            JMC.put('execute if data entity @s Inventory[{Slot:-106b,id:"minecraft:lime_dye"}] run scoreboard players set $dyeId __variable__ 5');
+            JMC.put('execute if data entity @s Inventory[{Slot:-106b,id:"minecraft:pink_dye"}] run scoreboard players set $dyeId __variable__ 6');
+            JMC.put('execute if data entity @s Inventory[{Slot:-106b,id:"minecraft:gray_dye"}] run scoreboard players set $dyeId __variable__ 7');
+            JMC.put('execute if data entity @s Inventory[{Slot:-106b,id:"minecraft:light_gray_dye"}] run scoreboard players set $dyeId __variable__ 8');
+            JMC.put('execute if data entity @s Inventory[{Slot:-106b,id:"minecraft:cyan_dye"}] run scoreboard players set $dyeId __variable__ 9');
+            JMC.put('execute if data entity @s Inventory[{Slot:-106b,id:"minecraft:purple_dye"}] run scoreboard players set $dyeId __variable__ 10');
+            JMC.put('execute if data entity @s Inventory[{Slot:-106b,id:"minecraft:blue_dye"}] run scoreboard players set $dyeId __variable__ 11');
+            JMC.put('execute if data entity @s Inventory[{Slot:-106b,id:"minecraft:brown_dye"}] run scoreboard players set $dyeId __variable__ 12');
+            JMC.put('execute if data entity @s Inventory[{Slot:-106b,id:"minecraft:green_dye"}] run scoreboard players set $dyeId __variable__ 13');
+            JMC.put('execute if data entity @s Inventory[{Slot:-106b,id:"minecraft:red_dye"}] run scoreboard players set $dyeId __variable__ 14');
+            JMC.put('execute if data entity @s Inventory[{Slot:-106b,id:"minecraft:black_dye"}] run scoreboard players set $dyeId __variable__ 15');
+
+            // Player has dye, and dye has been identified. Begin raycasting.
+            ender_chest.raycast();
+        } else if ( predicate colored_ender_chests:dye_in_mainhand ) {
+            $hand = 1;
+
+            JMC.put('execute if data entity @s SelectedItem{id:"minecraft:white_dye"} run scoreboard players set $dyeId __variable__ 0');
+            JMC.put('execute if data entity @s SelectedItem{id:"minecraft:orange_dye"} run scoreboard players set $dyeId __variable__ 1');
+            JMC.put('execute if data entity @s SelectedItem{id:"minecraft:magenta_dye"} run scoreboard players set $dyeId __variable__ 2');
+            JMC.put('execute if data entity @s SelectedItem{id:"minecraft:light_blue_dye"} run scoreboard players set $dyeId __variable__ 3');
+            JMC.put('execute if data entity @s SelectedItem{id:"minecraft:yellow_dye"} run scoreboard players set $dyeId __variable__ 4');
+            JMC.put('execute if data entity @s SelectedItem{id:"minecraft:lime_dye"} run scoreboard players set $dyeId __variable__ 5');
+            JMC.put('execute if data entity @s SelectedItem{id:"minecraft:pink_dye"} run scoreboard players set $dyeId __variable__ 6');
+            JMC.put('execute if data entity @s SelectedItem{id:"minecraft:gray_dye"} run scoreboard players set $dyeId __variable__ 7');
+            JMC.put('execute if data entity @s SelectedItem{id:"minecraft:light_gray_dye"} run scoreboard players set $dyeId __variable__ 8');
+            JMC.put('execute if data entity @s SelectedItem{id:"minecraft:cyan_dye"} run scoreboard players set $dyeId __variable__ 9');
+            JMC.put('execute if data entity @s SelectedItem{id:"minecraft:purple_dye"} run scoreboard players set $dyeId __variable__ 10');
+            JMC.put('execute if data entity @s SelectedItem{id:"minecraft:blue_dye"} run scoreboard players set $dyeId __variable__ 11');
+            JMC.put('execute if data entity @s SelectedItem{id:"minecraft:brown_dye"} run scoreboard players set $dyeId __variable__ 12');
+            JMC.put('execute if data entity @s SelectedItem{id:"minecraft:green_dye"} run scoreboard players set $dyeId __variable__ 13');
+            JMC.put('execute if data entity @s SelectedItem{id:"minecraft:red_dye"} run scoreboard players set $dyeId __variable__ 14');
+            JMC.put('execute if data entity @s SelectedItem{id:"minecraft:black_dye"} run scoreboard players set $dyeId __variable__ 15');
+
+            ender_chest.raycast();
+        }
+    }
+
     function raycast() {
-        // execute anchored eyes positioned ^ ^ ^ run function iris:get_target;
-        // execute as @e[type=minecraft:marker, tag=iris.ray] at @s run particle happy_villager ~ ~ ~ 0 0 0 0 1 normal @a;
+        // Options. Let entities get in the way and set the max range.
+        data modify storage iris:input TargetEntities set value true;
+        data modify storage iris:input MaxRecursionDepth set value 10;
+
+        // Begin raycast
+        execute anchored eyes positioned ^ ^ ^ run function iris:get_target;
+
+        execute at @e[type=minecraft:marker, tag=iris.ray] run particle flame;
+
+        // Check for colored ender chest
+        execute at @e[type=minecraft:marker, tag=iris.ray] align xyz positioned ~.5 ~ ~.5 if block ~ ~ ~ minecraft:barrel if entity @e[tag=colored_ender_chests.ender_chest.marker,distance=..1] run {
+            // Colored ender chest is being looked at. Identify which band is being looked at.
+
+            // Store y-value of where on the block's face is being looked at, from 0 (bottom of face) to 1 (top of face).
+            execute store result score $cy __variable__ run data get storage iris:output ContactCoordinates[1] 10000;
+
+            scoreboard players set $bandIdx __variable__ -1;
+
+            if ($cy>7600 && $cy<8399) {
+                $bandIdx = 0;
+            } else if ($cy>6500 && $cy<7599) {
+                $bandIdx = 1;
+            } else if ($cy>6000 && $cy<6499) {
+                $bandIdx = 2;
+            }
+
+        }
+        // Plan:
+        // Starting from band1, check if in range using ContactCoordinates*100. Then see if it is above the minimum but below the maximum. Repeat for each band or until the correct band is identified.
+        // Store bandId for later. Summon invisible armor stand in front of player if looking at band. If an item is in the armor stand's hand (see if execute store of hand tag [length] is greater than 0), check if it is a dye. If it is not a dye, /summon an item on top of the player with the item's nbt. If it is a dye, use Hardcode.repeatList() to create a function for each dye which does the following: removes dye from armor stand, assigns a number from 0-15 (based on the dye) to an index determined by the bandId, and "refreshes" the ender chest.
     }
 }
 
@@ -171,8 +277,9 @@ function __tick__() {
 
     JMC.put('execute as @e[tag=colored_ender_chests.ender_chest.marker] at @s unless block ~ ~-1 ~ barrel unless block ~ ~ ~ barrel unless block ~ ~1 ~ barrel run function colored_ender_chests:ender_chest/destroy');
 
+    kill @e[tag=colored_ender_chests.ender_chest.dye_right_click];
     execute
         as @a[gamemode=!spectator]
-        at @s
-        if entity @e[tag=colored_ender_chests.ender_chest.marker,distance=..6] run ender_chest.raycast();
+        at @s unless entity @s[gamemode=adventure]
+        if entity @e[tag=colored_ender_chests.ender_chest.marker,distance=..6] run ender_chest.check_for_dye();
 }

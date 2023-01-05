@@ -1,0 +1,1 @@
+execute if predicate colored_ender_chests:dye_in_mainhand run function colored_ender_chests:__private__/if_else/2
