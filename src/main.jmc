@@ -7,15 +7,15 @@ Item.create(
     "&<!italic>Ender Chest",
     [
         "&<!italic,blue>Colored Ender Chests",
-        "&<!italic,dark_gray>NAMESPACE:give/ender_chest"
+        "&<!italic,dark_gray>colored_ender_chests:give/ender_chest"
     ],
     {
         CustomModelData:17210202,
-        NAMESPACE: {
+        colored_ender_chests: {
             isItem:1b,
             isEnderChest:1b,
             type:"item",
-            id:"NAMESPACE:ender_chest"
+            id:"colored_ender_chests:ender_chest"
             },
         EntityTag:{
             Item: {
@@ -26,7 +26,7 @@ Item.create(
                 }
             },
             Tags: [
-                "NAMESPACE.ender_chest.item_frame"
+                "colored_ender_chests.ender_chest.item_frame"
             ]
         }
     }
@@ -66,21 +66,40 @@ Recipe.table(
     knowledge_book,
     () => {
         Item.give(ender_chest, @s, 1);
-        advancement revoke @s from NAMESPACE:ender_chest/craft;
-        recipe take @s NAMESPACE:ender_chest;
+        advancement revoke @s from colored_ender_chests:ender_chest/craft;
+        recipe take @s colored_ender_chests:ender_chest;
         clear @s knowledge_book 1;
     }
 );
 
+new tags.item(dye) {
+    "values": [
+        "minecraft:white_dye",
+        "minecraft:light_gray_dye",
+        "minecraft:gray_dye",
+        "minecraft:black_dye",
+        "minecraft:brown_dye",
+        "minecraft:red_dye",
+        "minecraft:yellow_dye",
+        "minecraft:lime_dye",
+        "minecraft:green_dye",
+        "minecraft:cyan_dye",
+        "minecraft:light_blue_dye",
+        "minecraft:blue_dye",
+        "minecraft:purple_dye",
+        "minecraft:magenta_dye",
+        "minecraft:pink_dye"
+    ]
+}
+
 class ender_chest {
     // Run in __tick__ as item frame
     function place() {
-        say "place";
-        execute align xyz positioned ~.5 ~.5 ~.5 run {
-            playsound block.stone.place block @a ~ ~ ~ 1;
-            summon armor_stand ~ ~ ~ {
+        execute align xyz positioned ~.5 ~ ~.5 run {
+            playsound block.stone.place block @a ~ ~ ~ 1 0.8;
+            summon armor_stand ~ ~1 ~ {
                 Tags: [
-                    "NAMESPACE.ender_chest.marker"
+                    "colored_ender_chests.ender_chest.marker"
                 ],
                 Pose: {Head:[0f,0f,0f]},
                 ArmorItems: [{},{},{},{
@@ -90,18 +109,26 @@ class ender_chest {
                     }],
                 NoGravity:1b,
                 Marker:1b,
-                Invisible:1b,
-                Small:1b
+                Invisible:1b
                 }
             setblock ~ ~ ~ barrel{CustomName:'{"text":"Ender Chest","italic":false}'}
             kill @s;
         }
     }
 
+    function destroy.noncreative_mined() {
+        say "noncreative_mined";
+    }
+
     function destroy() {
-        if (!(entity @e[type=item,distance=..0.5,nbt={NAMESPACE:{isPlayerMined:1b}}])) {
-            say "creative";
+        if (entity @e[type=item,distance=..0.5,nbt={colored_ender_chests:{isPlayerMined:1b}}]) {
+            ender_chest.destroy.noncreative_mined();
         }
+
+        stopsound @a[distance=..16] block block.wood.break;
+        playsound block.stone.break block @a ~ ~ ~ 1 0.8;
+
+        kill @s;
     }
 }
 
@@ -115,14 +142,10 @@ function __tick__() {
 
     execute as @e[
         type=item_frame,
-        tag=NAMESPACE.ender_chest.item_frame
+        tag=colored_ender_chests.ender_chest.item_frame
         ]
         at @s
         run ender_chest.place();
 
-    execute
-        as @e[tag=NAMESPACE.ender_chest.marker]
-        at @s
-        if block ~ ~ ~ barrel{}
-        run ender_chest.destroy();
+    JMC.put('execute as @e[tag=colored_ender_chests.ender_chest.marker] at @s unless block ~ ~-1 ~ barrel unless block ~ ~ ~ barrel unless block ~ ~1 ~ barrel run function colored_ender_chests:ender_chest/destroy');
 }
