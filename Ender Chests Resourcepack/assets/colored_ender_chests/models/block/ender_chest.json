@@ -105,8 +105,9 @@
 			"scale": [0.65, 0.65, 0.65]
 		},
 		"head": {
-			"translation": [0, -56.03, 0],
-			"scale": [1.601, 1.601, 1.601]
+			"__comment": "Intended for use with Small:1b armor stands (to prevent unloading one part of the armor stand when looking up close from the side)",
+			"translation": [0, -32, 0],
+			"scale": [2.4015, 2.4015, 2.4015]
 		},
 		"fixed": {
 			"rotation": [-90, 0, 0],
