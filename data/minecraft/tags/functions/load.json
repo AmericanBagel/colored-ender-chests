@@ -1,5 +1,6 @@
 {
   "values": [
-    "#load:load"
+    "#load:load",
+    "colored_ender_chests:__load__"
   ]
 }
