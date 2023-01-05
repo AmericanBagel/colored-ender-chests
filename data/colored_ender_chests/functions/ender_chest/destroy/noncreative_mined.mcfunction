@@ -1,1 +1,0 @@
-say noncreative_mined

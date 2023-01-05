@@ -1,4 +1,4 @@
-execute if entity @e[type=item,distance=..0.5,nbt={colored_ender_chests:{isPlayerMined:1b}}] run function colored_ender_chests:ender_chest/destroy/noncreative_mined
+execute as @p if entity @s[gamemode=!creative] run function colored_ender_chests:__private__/anonymous/1
 stopsound @a[distance=..16] block block.wood.break
-playsound block.stone.break block @a ~ ~ ~ 1 0.8
+playsound block.stone.break block @a ~ ~-1 ~ 1 0.8
 kill @s

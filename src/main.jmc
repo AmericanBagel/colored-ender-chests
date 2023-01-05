@@ -92,6 +92,26 @@ new tags.item(dye) {
     ]
 }
 
+new loot_tables(ender_chest) {
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:item_frame",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{CustomModelData:17210202,colored_ender_chests:{isItem:1b,isEnderChest:1b,type:\"item\",id:\"colored_ender_chests:ender_chest\"},EntityTag:{Item:{id:\"minecraft:item_frame\",Count:1b,tag:{CustomModelData:17210202}},Tags:[\"colored_ender_chests.ender_chest.item_frame\"]},display:{Name:'{\"text\":\"Ender Chest\",\"italic\":false}',Lore:['{\"text\":\"Colored Ender Chests\",\"italic\":false,\"color\":\"blue\"}','{\"text\":\"colored_ender_chests:give/ender_chest\",\"italic\":false,\"color\":\"dark_gray\"}']}}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+
 class ender_chest {
     // Run in __tick__ as item frame
     function place() {
@@ -116,19 +136,21 @@ class ender_chest {
         }
     }
 
-    function destroy.noncreative_mined() {
-        say "noncreative_mined";
-    }
-
     function destroy() {
-        if (entity @e[type=item,distance=..0.5,nbt={colored_ender_chests:{isPlayerMined:1b}}]) {
-            ender_chest.destroy.noncreative_mined();
+        execute as @p if entity @s[gamemode=!creative] run {
+            kill @e[type=item,distance=..1,nbt={Item:{id:"minecraft:barrel"}}];
+            JMC.put("execute align xyz run loot spawn ~.5 ~-1 ~.5 loot colored_ender_chests:ender_chest");
         }
 
         stopsound @a[distance=..16] block block.wood.break;
-        playsound block.stone.break block @a ~ ~ ~ 1 0.8;
+        playsound block.stone.break block @a ~ ~-1 ~ 1 0.8;
 
         kill @s;
+    }
+
+    function raycast() {
+        // execute anchored eyes positioned ^ ^ ^ run function iris:get_target;
+        // execute as @e[type=minecraft:marker, tag=iris.ray] at @s run particle happy_villager ~ ~ ~ 0 0 0 0 1 normal @a;
     }
 }
 
@@ -148,4 +170,9 @@ function __tick__() {
         run ender_chest.place();
 
     JMC.put('execute as @e[tag=colored_ender_chests.ender_chest.marker] at @s unless block ~ ~-1 ~ barrel unless block ~ ~ ~ barrel unless block ~ ~1 ~ barrel run function colored_ender_chests:ender_chest/destroy');
+
+    execute
+        as @a[gamemode=!spectator]
+        at @s
+        if entity @e[tag=colored_ender_chests.ender_chest.marker,distance=..6] run ender_chest.raycast();
 }
