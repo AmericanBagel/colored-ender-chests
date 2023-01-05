@@ -1,4 +1,5 @@
 @import "functions/minecraft.jmc";
+@import "functions/limit_count_modifiers.jmc";
 
 scoreboard objectives add colored_ender_chests.global dummy;
 
