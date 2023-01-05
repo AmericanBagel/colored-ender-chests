@@ -251,9 +251,24 @@ class ender_chest {
                 $bandIdx = 2;
             }
 
+            // If any band was identified
             if ($cy > $_1) {
                 // Summon right-click detection
+                execute at @s positioned ^ ^ ^2 positioned ~ ~.5 ~ run {
+                    // TODO: Use an incrementing scoreboard to link player and villager together. Only spawn if there is no linked villager, kill all villagers who do not have a linked player (i.e. player left, died)
 
+                    // summon villager ~ ~ ~ {
+                    //     Tags:[
+                    //         "colored_ender_chests",
+                    //         "colored_ender_chests.ender_chest",
+                    //         "colored_ender_chests.ender_chest.dye_right_click"
+                    //     ],
+                    //     NoAI:1b,
+                    //     Invulnerable:1b,
+                    //     Silent:1b,
+                    //     Trades:{}
+                    // }
+                }
             }
 
         }
@@ -280,7 +295,6 @@ function __tick__() {
 
     JMC.put('execute as @e[tag=colored_ender_chests.ender_chest.marker] at @s unless block ~ ~-1 ~ barrel unless block ~ ~ ~ barrel unless block ~ ~1 ~ barrel run function colored_ender_chests:ender_chest/destroy');
 
-    kill @e[tag=colored_ender_chests.ender_chest.dye_right_click];
     execute
         as @a[gamemode=!spectator]
         at @s unless entity @s[gamemode=adventure]
