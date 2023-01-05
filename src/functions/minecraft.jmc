@@ -1,0 +1,12 @@
+new tags.functions(minecraft.load) {
+    "values": [
+        "#load:load"
+  ]
+}
+
+new tags.functions(minecraft.tick) {
+    "values": [
+        "qcb:tick",
+        "colored_ender_chests:__tick__"
+  ]
+}

@@ -1,4 +1,5 @@
-@import "src/functions/*";
+@import "functions/minecraft.jmc";
+@import "functions/invisible_minecart.jmc";
 
 scoreboard objectives add colored_ender_chests.global dummy;
 
