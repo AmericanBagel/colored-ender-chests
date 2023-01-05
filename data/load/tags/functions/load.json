@@ -2,6 +2,7 @@
   "values": [
     "#rx.playerdb:load",
     "qcb:load",
+    "iris:setup/load",
     "colored_ender_chests:__load__"
   ]
 }
