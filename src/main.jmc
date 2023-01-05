@@ -1,7 +1,8 @@
-@import "functions/minecraft.jmc";
-@import "functions/limit_count_modifiers.jmc";
+@import "src/functions/*";
 
 scoreboard objectives add colored_ender_chests.global dummy;
+$_1 = 0;
+$_1--;
 
 /////// Ender Chest
 Item.create(
@@ -23,8 +24,6 @@ Item.create(
         EntityTag:{
             Item: {
                 id:"minecraft:item_frame",
-                Count:1b,
-                tag:{
                     CustomModelData:17210202
                 }
             },
@@ -32,8 +31,6 @@ Item.create(
                 "colored_ender_chests.ender_chest.item_frame"
             ]
         }
-    }
-
 );
 
 Recipe.table(
@@ -252,6 +249,11 @@ class ender_chest {
                 $bandIdx = 1;
             } else if ($cy>6000 && $cy<6499) {
                 $bandIdx = 2;
+            }
+
+            if ($cy > $_1) {
+                // Summon right-click detection
+
             }
 
         }

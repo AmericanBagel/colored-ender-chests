@@ -1,4 +1,4 @@
-new item_modifiers(limit_count_max_1) {
+new item_modifiers(limit_count_max_1) [
   {
     "function": "minecraft:limit_count",
     "limit": {
@@ -6,8 +6,9 @@ new item_modifiers(limit_count_max_1) {
       "max": 1
     }
   }
-}
-new item_modifiers(limit_count_max_2) {
+]
+
+new item_modifiers(limit_count_max_2) [
   {
     "function": "minecraft:limit_count",
     "limit": {
@@ -15,8 +16,9 @@ new item_modifiers(limit_count_max_2) {
       "max": 2
     }
   }
-}
-new item_modifiers(limit_count_max_3) {
+]
+
+new item_modifiers(limit_count_max_3) [
   {
     "function": "minecraft:limit_count",
     "limit": {
@@ -24,8 +26,9 @@ new item_modifiers(limit_count_max_3) {
       "max": 3
     }
   }
-}
-new item_modifiers(limit_count_max_4) {
+]
+
+new item_modifiers(limit_count_max_4) [
   {
     "function": "minecraft:limit_count",
     "limit": {
@@ -33,8 +36,9 @@ new item_modifiers(limit_count_max_4) {
       "max": 4
     }
   }
-}
-new item_modifiers(limit_count_max_5) {
+]
+
+new item_modifiers(limit_count_max_5) [
   {
     "function": "minecraft:limit_count",
     "limit": {
@@ -42,8 +46,9 @@ new item_modifiers(limit_count_max_5) {
       "max": 5
     }
   }
-}
-new item_modifiers(limit_count_max_6) {
+]
+
+new item_modifiers(limit_count_max_6) [
   {
     "function": "minecraft:limit_count",
     "limit": {
@@ -51,8 +56,9 @@ new item_modifiers(limit_count_max_6) {
       "max": 6
     }
   }
-}
-new item_modifiers(limit_count_max_7) {
+]
+
+new item_modifiers(limit_count_max_7) [
   {
     "function": "minecraft:limit_count",
     "limit": {
@@ -60,8 +66,9 @@ new item_modifiers(limit_count_max_7) {
       "max": 7
     }
   }
-}
-new item_modifiers(limit_count_max_8) {
+]
+
+new item_modifiers(limit_count_max_8) [
   {
     "function": "minecraft:limit_count",
     "limit": {
@@ -69,8 +76,9 @@ new item_modifiers(limit_count_max_8) {
       "max": 8
     }
   }
-}
-new item_modifiers(limit_count_max_9) {
+]
+
+new item_modifiers(limit_count_max_9) [
   {
     "function": "minecraft:limit_count",
     "limit": {
@@ -78,8 +86,9 @@ new item_modifiers(limit_count_max_9) {
       "max": 9
     }
   }
-}
-new item_modifiers(limit_count_max_10) {
+]
+
+new item_modifiers(limit_count_max_10) [
   {
     "function": "minecraft:limit_count",
     "limit": {
@@ -87,8 +96,9 @@ new item_modifiers(limit_count_max_10) {
       "max": 10
     }
   }
-}
-new item_modifiers(limit_count_max_11) {
+]
+
+new item_modifiers(limit_count_max_11) [
   {
     "function": "minecraft:limit_count",
     "limit": {
@@ -96,8 +106,9 @@ new item_modifiers(limit_count_max_11) {
       "max": 11
     }
   }
-}
-new item_modifiers(limit_count_max_12) {
+]
+
+new item_modifiers(limit_count_max_12) [
   {
     "function": "minecraft:limit_count",
     "limit": {
@@ -105,8 +116,9 @@ new item_modifiers(limit_count_max_12) {
       "max": 12
     }
   }
-}
-new item_modifiers(limit_count_max_13) {
+]
+
+new item_modifiers(limit_count_max_13) [
   {
     "function": "minecraft:limit_count",
     "limit": {
@@ -114,8 +126,9 @@ new item_modifiers(limit_count_max_13) {
       "max": 13
     }
   }
-}
-new item_modifiers(limit_count_max_14) {
+]
+
+new item_modifiers(limit_count_max_14) [
   {
     "function": "minecraft:limit_count",
     "limit": {
@@ -123,8 +136,9 @@ new item_modifiers(limit_count_max_14) {
       "max": 14
     }
   }
-}
-new item_modifiers(limit_count_max_15) {
+]
+
+new item_modifiers(limit_count_max_15) [
   {
     "function": "minecraft:limit_count",
     "limit": {
@@ -132,8 +146,9 @@ new item_modifiers(limit_count_max_15) {
       "max": 15
     }
   }
-}
-new item_modifiers(limit_count_max_16) {
+]
+
+new item_modifiers(limit_count_max_16) [
   {
     "function": "minecraft:limit_count",
     "limit": {
@@ -141,8 +156,9 @@ new item_modifiers(limit_count_max_16) {
       "max": 16
     }
   }
-}
-new item_modifiers(limit_count_max_17) {
+]
+
+new item_modifiers(limit_count_max_17) [
   {
     "function": "minecraft:limit_count",
     "limit": {
@@ -150,8 +166,9 @@ new item_modifiers(limit_count_max_17) {
       "max": 17
     }
   }
-}
-new item_modifiers(limit_count_max_18) {
+]
+
+new item_modifiers(limit_count_max_18) [
   {
     "function": "minecraft:limit_count",
     "limit": {
@@ -159,8 +176,9 @@ new item_modifiers(limit_count_max_18) {
       "max": 18
     }
   }
-}
-new item_modifiers(limit_count_max_19) {
+]
+
+new item_modifiers(limit_count_max_19) [
   {
     "function": "minecraft:limit_count",
     "limit": {
@@ -168,8 +186,9 @@ new item_modifiers(limit_count_max_19) {
       "max": 19
     }
   }
-}
-new item_modifiers(limit_count_max_20) {
+]
+
+new item_modifiers(limit_count_max_20) [
   {
     "function": "minecraft:limit_count",
     "limit": {
@@ -177,8 +196,9 @@ new item_modifiers(limit_count_max_20) {
       "max": 20
     }
   }
-}
-new item_modifiers(limit_count_max_21) {
+]
+
+new item_modifiers(limit_count_max_21) [
   {
     "function": "minecraft:limit_count",
     "limit": {
@@ -186,8 +206,9 @@ new item_modifiers(limit_count_max_21) {
       "max": 21
     }
   }
-}
-new item_modifiers(limit_count_max_22) {
+]
+
+new item_modifiers(limit_count_max_22) [
   {
     "function": "minecraft:limit_count",
     "limit": {
@@ -195,8 +216,9 @@ new item_modifiers(limit_count_max_22) {
       "max": 22
     }
   }
-}
-new item_modifiers(limit_count_max_23) {
+]
+
+new item_modifiers(limit_count_max_23) [
   {
     "function": "minecraft:limit_count",
     "limit": {
@@ -204,8 +226,9 @@ new item_modifiers(limit_count_max_23) {
       "max": 23
     }
   }
-}
-new item_modifiers(limit_count_max_24) {
+]
+
+new item_modifiers(limit_count_max_24) [
   {
     "function": "minecraft:limit_count",
     "limit": {
@@ -213,8 +236,9 @@ new item_modifiers(limit_count_max_24) {
       "max": 24
     }
   }
-}
-new item_modifiers(limit_count_max_25) {
+]
+
+new item_modifiers(limit_count_max_25) [
   {
     "function": "minecraft:limit_count",
     "limit": {
@@ -222,8 +246,9 @@ new item_modifiers(limit_count_max_25) {
       "max": 25
     }
   }
-}
-new item_modifiers(limit_count_max_26) {
+]
+
+new item_modifiers(limit_count_max_26) [
   {
     "function": "minecraft:limit_count",
     "limit": {
@@ -231,8 +256,9 @@ new item_modifiers(limit_count_max_26) {
       "max": 26
     }
   }
-}
-new item_modifiers(limit_count_max_27) {
+]
+
+new item_modifiers(limit_count_max_27) [
   {
     "function": "minecraft:limit_count",
     "limit": {
@@ -240,8 +266,9 @@ new item_modifiers(limit_count_max_27) {
       "max": 27
     }
   }
-}
-new item_modifiers(limit_count_max_28) {
+]
+
+new item_modifiers(limit_count_max_28) [
   {
     "function": "minecraft:limit_count",
     "limit": {
@@ -249,8 +276,9 @@ new item_modifiers(limit_count_max_28) {
       "max": 28
     }
   }
-}
-new item_modifiers(limit_count_max_29) {
+]
+
+new item_modifiers(limit_count_max_29) [
   {
     "function": "minecraft:limit_count",
     "limit": {
@@ -258,8 +286,9 @@ new item_modifiers(limit_count_max_29) {
       "max": 29
     }
   }
-}
-new item_modifiers(limit_count_max_30) {
+]
+
+new item_modifiers(limit_count_max_30) [
   {
     "function": "minecraft:limit_count",
     "limit": {
@@ -267,8 +296,9 @@ new item_modifiers(limit_count_max_30) {
       "max": 30
     }
   }
-}
-new item_modifiers(limit_count_max_31) {
+]
+
+new item_modifiers(limit_count_max_31) [
   {
     "function": "minecraft:limit_count",
     "limit": {
@@ -276,8 +306,9 @@ new item_modifiers(limit_count_max_31) {
       "max": 31
     }
   }
-}
-new item_modifiers(limit_count_max_32) {
+]
+
+new item_modifiers(limit_count_max_32) [
   {
     "function": "minecraft:limit_count",
     "limit": {
@@ -285,8 +316,9 @@ new item_modifiers(limit_count_max_32) {
       "max": 32
     }
   }
-}
-new item_modifiers(limit_count_max_33) {
+]
+
+new item_modifiers(limit_count_max_33) [
   {
     "function": "minecraft:limit_count",
     "limit": {
@@ -294,8 +326,9 @@ new item_modifiers(limit_count_max_33) {
       "max": 33
     }
   }
-}
-new item_modifiers(limit_count_max_34) {
+]
+
+new item_modifiers(limit_count_max_34) [
   {
     "function": "minecraft:limit_count",
     "limit": {
@@ -303,8 +336,9 @@ new item_modifiers(limit_count_max_34) {
       "max": 34
     }
   }
-}
-new item_modifiers(limit_count_max_35) {
+]
+
+new item_modifiers(limit_count_max_35) [
   {
     "function": "minecraft:limit_count",
     "limit": {
@@ -312,8 +346,9 @@ new item_modifiers(limit_count_max_35) {
       "max": 35
     }
   }
-}
-new item_modifiers(limit_count_max_36) {
+]
+
+new item_modifiers(limit_count_max_36) [
   {
     "function": "minecraft:limit_count",
     "limit": {
@@ -321,8 +356,9 @@ new item_modifiers(limit_count_max_36) {
       "max": 36
     }
   }
-}
-new item_modifiers(limit_count_max_37) {
+]
+
+new item_modifiers(limit_count_max_37) [
   {
     "function": "minecraft:limit_count",
     "limit": {
@@ -330,8 +366,9 @@ new item_modifiers(limit_count_max_37) {
       "max": 37
     }
   }
-}
-new item_modifiers(limit_count_max_38) {
+]
+
+new item_modifiers(limit_count_max_38) [
   {
     "function": "minecraft:limit_count",
     "limit": {
@@ -339,8 +376,9 @@ new item_modifiers(limit_count_max_38) {
       "max": 38
     }
   }
-}
-new item_modifiers(limit_count_max_39) {
+]
+
+new item_modifiers(limit_count_max_39) [
   {
     "function": "minecraft:limit_count",
     "limit": {
@@ -348,8 +386,9 @@ new item_modifiers(limit_count_max_39) {
       "max": 39
     }
   }
-}
-new item_modifiers(limit_count_max_40) {
+]
+
+new item_modifiers(limit_count_max_40) [
   {
     "function": "minecraft:limit_count",
     "limit": {
@@ -357,8 +396,9 @@ new item_modifiers(limit_count_max_40) {
       "max": 40
     }
   }
-}
-new item_modifiers(limit_count_max_41) {
+]
+
+new item_modifiers(limit_count_max_41) [
   {
     "function": "minecraft:limit_count",
     "limit": {
@@ -366,8 +406,9 @@ new item_modifiers(limit_count_max_41) {
       "max": 41
     }
   }
-}
-new item_modifiers(limit_count_max_42) {
+]
+
+new item_modifiers(limit_count_max_42) [
   {
     "function": "minecraft:limit_count",
     "limit": {
@@ -375,8 +416,9 @@ new item_modifiers(limit_count_max_42) {
       "max": 42
     }
   }
-}
-new item_modifiers(limit_count_max_43) {
+]
+
+new item_modifiers(limit_count_max_43) [
   {
     "function": "minecraft:limit_count",
     "limit": {
@@ -384,8 +426,9 @@ new item_modifiers(limit_count_max_43) {
       "max": 43
     }
   }
-}
-new item_modifiers(limit_count_max_44) {
+]
+
+new item_modifiers(limit_count_max_44) [
   {
     "function": "minecraft:limit_count",
     "limit": {
@@ -393,8 +436,9 @@ new item_modifiers(limit_count_max_44) {
       "max": 44
     }
   }
-}
-new item_modifiers(limit_count_max_45) {
+]
+
+new item_modifiers(limit_count_max_45) [
   {
     "function": "minecraft:limit_count",
     "limit": {
@@ -402,8 +446,9 @@ new item_modifiers(limit_count_max_45) {
       "max": 45
     }
   }
-}
-new item_modifiers(limit_count_max_46) {
+]
+
+new item_modifiers(limit_count_max_46) [
   {
     "function": "minecraft:limit_count",
     "limit": {
@@ -411,8 +456,9 @@ new item_modifiers(limit_count_max_46) {
       "max": 46
     }
   }
-}
-new item_modifiers(limit_count_max_47) {
+]
+
+new item_modifiers(limit_count_max_47) [
   {
     "function": "minecraft:limit_count",
     "limit": {
@@ -420,8 +466,9 @@ new item_modifiers(limit_count_max_47) {
       "max": 47
     }
   }
-}
-new item_modifiers(limit_count_max_48) {
+]
+
+new item_modifiers(limit_count_max_48) [
   {
     "function": "minecraft:limit_count",
     "limit": {
@@ -429,8 +476,9 @@ new item_modifiers(limit_count_max_48) {
       "max": 48
     }
   }
-}
-new item_modifiers(limit_count_max_49) {
+]
+
+new item_modifiers(limit_count_max_49) [
   {
     "function": "minecraft:limit_count",
     "limit": {
@@ -438,8 +486,9 @@ new item_modifiers(limit_count_max_49) {
       "max": 49
     }
   }
-}
-new item_modifiers(limit_count_max_50) {
+]
+
+new item_modifiers(limit_count_max_50) [
   {
     "function": "minecraft:limit_count",
     "limit": {
@@ -447,8 +496,9 @@ new item_modifiers(limit_count_max_50) {
       "max": 50
     }
   }
-}
-new item_modifiers(limit_count_max_51) {
+]
+
+new item_modifiers(limit_count_max_51) [
   {
     "function": "minecraft:limit_count",
     "limit": {
@@ -456,8 +506,9 @@ new item_modifiers(limit_count_max_51) {
       "max": 51
     }
   }
-}
-new item_modifiers(limit_count_max_52) {
+]
+
+new item_modifiers(limit_count_max_52) [
   {
     "function": "minecraft:limit_count",
     "limit": {
@@ -465,8 +516,9 @@ new item_modifiers(limit_count_max_52) {
       "max": 52
     }
   }
-}
-new item_modifiers(limit_count_max_53) {
+]
+
+new item_modifiers(limit_count_max_53) [
   {
     "function": "minecraft:limit_count",
     "limit": {
@@ -474,8 +526,9 @@ new item_modifiers(limit_count_max_53) {
       "max": 53
     }
   }
-}
-new item_modifiers(limit_count_max_54) {
+]
+
+new item_modifiers(limit_count_max_54) [
   {
     "function": "minecraft:limit_count",
     "limit": {
@@ -483,8 +536,9 @@ new item_modifiers(limit_count_max_54) {
       "max": 54
     }
   }
-}
-new item_modifiers(limit_count_max_55) {
+]
+
+new item_modifiers(limit_count_max_55) [
   {
     "function": "minecraft:limit_count",
     "limit": {
@@ -492,8 +546,9 @@ new item_modifiers(limit_count_max_55) {
       "max": 55
     }
   }
-}
-new item_modifiers(limit_count_max_56) {
+]
+
+new item_modifiers(limit_count_max_56) [
   {
     "function": "minecraft:limit_count",
     "limit": {
@@ -501,8 +556,9 @@ new item_modifiers(limit_count_max_56) {
       "max": 56
     }
   }
-}
-new item_modifiers(limit_count_max_57) {
+]
+
+new item_modifiers(limit_count_max_57) [
   {
     "function": "minecraft:limit_count",
     "limit": {
@@ -510,8 +566,9 @@ new item_modifiers(limit_count_max_57) {
       "max": 57
     }
   }
-}
-new item_modifiers(limit_count_max_58) {
+]
+
+new item_modifiers(limit_count_max_58) [
   {
     "function": "minecraft:limit_count",
     "limit": {
@@ -519,8 +576,9 @@ new item_modifiers(limit_count_max_58) {
       "max": 58
     }
   }
-}
-new item_modifiers(limit_count_max_59) {
+]
+
+new item_modifiers(limit_count_max_59) [
   {
     "function": "minecraft:limit_count",
     "limit": {
@@ -528,8 +586,9 @@ new item_modifiers(limit_count_max_59) {
       "max": 59
     }
   }
-}
-new item_modifiers(limit_count_max_60) {
+]
+
+new item_modifiers(limit_count_max_60) [
   {
     "function": "minecraft:limit_count",
     "limit": {
@@ -537,8 +596,9 @@ new item_modifiers(limit_count_max_60) {
       "max": 60
     }
   }
-}
-new item_modifiers(limit_count_max_61) {
+]
+
+new item_modifiers(limit_count_max_61) [
   {
     "function": "minecraft:limit_count",
     "limit": {
@@ -546,8 +606,9 @@ new item_modifiers(limit_count_max_61) {
       "max": 61
     }
   }
-}
-new item_modifiers(limit_count_max_62) {
+]
+
+new item_modifiers(limit_count_max_62) [
   {
     "function": "minecraft:limit_count",
     "limit": {
@@ -555,8 +616,9 @@ new item_modifiers(limit_count_max_62) {
       "max": 62
     }
   }
-}
-new item_modifiers(limit_count_max_63) {
+]
+
+new item_modifiers(limit_count_max_63) [
   {
     "function": "minecraft:limit_count",
     "limit": {
@@ -564,8 +626,9 @@ new item_modifiers(limit_count_max_63) {
       "max": 63
     }
   }
-}
-new item_modifiers(limit_count_max_64) {
+]
+
+new item_modifiers(limit_count_max_64) [
   {
     "function": "minecraft:limit_count",
     "limit": {
@@ -573,4 +636,5 @@ new item_modifiers(limit_count_max_64) {
       "max": 64
     }
   }
-}
+]
+
