@@ -1,2 +1,0 @@
-execute as @e[type=#minecraft:minecarts,tag=!invisible_minecart] run function colored_ender_chests:invisible_minecarts
-execute as @e[type=item_frame,tag=NAMESPACE.ender_chest.item_frame] at @s run function colored_ender_chests:ender_chest/place

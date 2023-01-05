@@ -97,6 +97,12 @@ class ender_chest {
             kill @s;
         }
     }
+
+    function destroy() {
+        if (!(entity @e[type=item,distance=..0.5,nbt={NAMESPACE:{isPlayerMined:1b}}])) {
+            say "creative";
+        }
+    }
 }
 
 function __tick__() {
@@ -117,6 +123,6 @@ function __tick__() {
     execute
         as @e[tag=NAMESPACE.ender_chest.marker]
         at @s
-        unless block ~ ~ ~ barrel{CustomName:'{"text":"Ender Chest","italic":false}'}
+        if block ~ ~ ~ barrel{}
         run ender_chest.destroy();
 }
