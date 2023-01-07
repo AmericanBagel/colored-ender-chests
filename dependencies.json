@@ -15,11 +15,15 @@
     {
       "name": "Iris",
       "url": "https://github.com/Aeldrion/Iris/zipball/main"
+    },
+    {
+      "name": "Entity Link",
+      "url": "https://github.com/AmericanBagel/entity_link"
     }
   ],
   "append_function_tags": [
     {
-      "tag": "load:load",
+      "tag": "#load:load",
       "value": "colored_ender_chests:load"
     }
   ],
