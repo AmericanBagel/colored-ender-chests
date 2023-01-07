@@ -382,6 +382,9 @@ class ender_chest {
     }
 }
 
+// Lantern Load compatibility
+scoreboard players set colored_ender_chests load.status 1;
+
 function __tick__() {
     // If the item frame is placed down, place the ender chest
     execute as @e[
