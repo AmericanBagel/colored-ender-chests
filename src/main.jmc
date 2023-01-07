@@ -316,13 +316,16 @@ class ender_chest {
         //// Options for iris raycasting
         // I would set it to true so the raycasting wouldn't be firing every tick the player looks at the ender chest, but this would interfere with the right-click killing because the villager would stop the raycasting, causing the system to detect the player stopped looking at the ender chest, causing the villager to be killed.
         data modify storage iris:input TargetEntities set value false;
-        data modify storage iris:input MaxRecursionDepth set value 10;
+        data modify storage iris:input MaxRecursionDepth set value 20;
 
         // Begin raycast
         execute anchored eyes positioned ^ ^ ^ run function iris:get_target;
+        tellraw @a {"storage":"iris:output","nbt":"ContactCoordinates"};
+
+        execute at @e[type=minecraft:marker, tag=iris.ray] run particle minecraft:flame;
 
         // Check for colored ender chest
-        execute at @e[type=minecraft:marker, tag=iris.ray] align xyz positioned ~.5 ~ ~.5 if block ~ ~ ~ minecraft:barrel if entity @e[tag=colored_ender_chests.ender_chest.marker,distance=..1] run {
+        execute at @e[type=minecraft:marker, tag=iris.ray] if block ~ ~ ~ minecraft:barrel align xyz positioned ~.5 ~ ~.5 if entity @e[tag=colored_ender_chests.ender_chest.marker,distance=..1.5] run {
             // Colored ender chest is being looked at. Identify which band is being looked at.
 
             // Store y-value of where on the block's face is being looked at, from 0 (bottom of face) to 1 (top of face).
