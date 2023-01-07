@@ -150,6 +150,7 @@ class ender_chest {
     // Run in __tick__ as item frame
     function place() {
         execute align xyz positioned ~.5 ~ ~.5 run {
+            stopsound @a * minecraft:entity.item_frame.place;
             playsound block.stone.place block @a ~ ~ ~ 1 0.8;
 
             // Body
