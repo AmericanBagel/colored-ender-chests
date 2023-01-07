@@ -3,6 +3,7 @@
     "#rx.playerdb:load",
     "qcb:load",
     "iris:setup/load",
+    "entity_link:__load__",
     "colored_ender_chests:__load__"
   ]
 }
