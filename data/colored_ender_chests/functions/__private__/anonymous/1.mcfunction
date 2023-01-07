@@ -1,2 +1,2 @@
-kill @e[type=item,distance=..1,nbt={Item:{id:"minecraft:barrel"}}]
-execute align xyz run loot spawn ~.5 ~-1 ~.5 loot colored_ender_chests:ender_chest
+summon armor_stand ~ ~1 ~ {Tags:["colored_ender_chests","colored_ender_chests.ender_chest","colored_ender_chests.ender_chest.marker","colored_ender_chests.ender_chest.part","colored_ender_chests.ender_chest.part.body",],Pose:{Head:[0f,0f,0f]},ArmorItems:[{},{},{},{id:"minecraft:iron_nugget",Count:1b,tag:{CustomModelData:17210200}}],NoGravity:1b,Marker:1b,Invisible:1b}
+function colored_ender_chests:__private__/anonymous/0

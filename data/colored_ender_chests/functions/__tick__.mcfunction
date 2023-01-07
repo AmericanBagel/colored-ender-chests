@@ -1,4 +1,5 @@
-execute as @e[type=#minecraft:minecarts,tag=!invisible_minecart] run function colored_ender_chests:invisible_minecarts
-execute as @e[type=item_frame,tag=colored_ender_chests.ender_chest.item_frame] at @s run function colored_ender_chests:ender_chest/place
+execute as @e[type=item_frame,nbt={Item:{id:"minecraft:item_frame",Count:1b,tag:{isFramedEnderChest:1b}}}] at @s run function colored_ender_chests:ender_chest/place
 execute as @e[tag=colored_ender_chests.ender_chest.marker] at @s unless block ~ ~-1 ~ barrel unless block ~ ~ ~ barrel unless block ~ ~1 ~ barrel run function colored_ender_chests:ender_chest/destroy
+scoreboard players remove @a[scores={colored_ender_chests.looked_at_band=2}] colored_ender_chests.looked_at_band 1
 execute as @a[gamemode=!spectator] at @s unless entity @s[gamemode=adventure] if entity @e[tag=colored_ender_chests.ender_chest.marker,distance=..6] run function colored_ender_chests:ender_chest/check_for_dye
+execute as @a[scores={colored_ender_chests.looked_at_band=1}] run function colored_ender_chests:__private__/anonymous/7

@@ -1,0 +1,1 @@
+execute at @s positioned ^ ^ ^.75 positioned ~ ~.5 ~ run function colored_ender_chests:__private__/anonymous/4

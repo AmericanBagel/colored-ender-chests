@@ -2,6 +2,10 @@
 @import "src/functions/*";
 
 scoreboard objectives add colored_ender_chests.global dummy;
+scoreboard objectives add colored_ender_chests.looked_at_band dummy;
+team add colored_ender_chests.no_collision;
+team modify colored_ender_chests.no_collision collisionRule never;
+
 $_1 = 0;
 $_1--;
 
@@ -15,7 +19,7 @@ Item.create(
         "&<!italic,dark_gray>colored_ender_chests:give/ender_chest"
     ],
     {
-        CustomModelData:17210202,
+        CustomModelData:17210200,
         colored_ender_chests: {
             isItem:1b,
             isEnderChest:1b,
@@ -24,8 +28,12 @@ Item.create(
             },
         EntityTag:{
             Item: {
-                id:"minecraft:item_frame",
-                    CustomModelData:17210202
+                    id:"minecraft:item_frame",
+                    Count:1b,
+                    tag: {
+                        CustomModelData:17210200,
+                        isFramedEnderChest:1b
+                    }
                 }
             },
             Tags: [
@@ -143,22 +151,100 @@ class ender_chest {
     function place() {
         execute align xyz positioned ~.5 ~ ~.5 run {
             playsound block.stone.place block @a ~ ~ ~ 1 0.8;
-            summon armor_stand ~ ~1 ~ {
+
+            // Body
+            execute run {
+                summon armor_stand ~ ~1 ~ {
                 Tags: [
                     "colored_ender_chests",
                     "colored_ender_chests.ender_chest",
-                    "colored_ender_chests.ender_chest.marker"
+                    "colored_ender_chests.ender_chest.marker",
+                    "colored_ender_chests.ender_chest.part",
+                    "colored_ender_chests.ender_chest.part.body",
                 ],
                 Pose: {Head:[0f,0f,0f]},
                 ArmorItems: [{},{},{},{
-                    id: "minecraft:item_frame",
+                    id: "minecraft:iron_nugget",
                     Count: 1b,
                     tag: {CustomModelData:17210200}
                     }],
                 NoGravity:1b,
                 Marker:1b,
                 Invisible:1b
-                };
+            };
+
+            // Bands
+            execute run {
+                // Band 0
+                summon armor_stand ~ ~1.16 ~ {
+                    Tags: [
+                        "colored_ender_chests",
+                        "colored_ender_chests.ender_chest",
+                        "colored_ender_chests.ender_chest.part",
+                        "colored_ender_chests.ender_chest.part.band",
+                        "colored_ender_chests.ender_chest.part.band.0",
+                    ],
+                    Pose: {Head:[0f,0f,0f]},
+                    ArmorItems: [{},{},{},{
+                        id: "minecraft:potion",
+                        Count: 1b,
+                        tag: {
+                                CustomModelData:17210200,
+                                CustomPotionColor:16777215
+                            }
+                        }],
+                    NoGravity:1b,
+                    Marker:1b,
+                    Invisible:1b
+                    };
+
+                // Band 1
+                summon armor_stand ~ ~1.08 ~ {
+                    Tags: [
+                        "colored_ender_chests",
+                        "colored_ender_chests.ender_chest",
+                        "colored_ender_chests.ender_chest.part",
+                        "colored_ender_chests.ender_chest.part.band",
+                        "colored_ender_chests.ender_chest.part.band.1",
+                    ],
+                    Pose: {Head:[0f,0f,0f]},
+                    ArmorItems: [{},{},{},{
+                        id: "minecraft:potion",
+                        Count: 1b,
+                        tag: {
+                                CustomModelData:17210200,
+                                CustomPotionColor:16777215
+                            }
+                        }],
+                    NoGravity:1b,
+                    Marker:1b,
+                    Invisible:1b
+                    };
+                // Band 2
+                summon armor_stand ~ ~1 ~ {
+                    Tags: [
+                        "colored_ender_chests",
+                        "colored_ender_chests.ender_chest",
+                        "colored_ender_chests.ender_chest.part",
+                        "colored_ender_chests.ender_chest.part.band",
+                        "colored_ender_chests.ender_chest.part.band.2",
+                    ],
+                    Pose: {Head:[0f,0f,0f]},
+                    ArmorItems: [{},{},{},{
+                        id: "minecraft:potion",
+                        Count: 1b,
+                        tag: {
+                                CustomModelData:17210200,
+                                CustomPotionColor:16777215
+                            }
+                        }],
+                    NoGravity:1b,
+                    Marker:1b,
+                    Invisible:1b
+                    };
+                }
+            }
+
             setblock ~ ~ ~ barrel{CustomName:'{"text":"Ender Chest","italic":false}'};
             kill @s;
         }
@@ -226,14 +312,13 @@ class ender_chest {
     }
 
     function raycast() {
-        // Options. Let entities get in the way and set the max range.
-        data modify storage iris:input TargetEntities set value true;
+        //// Options for iris raycasting
+        // I would set it to true so the raycasting wouldn't be firing every tick the player looks at the ender chest, but this would interfere with the right-click killing because the villager would stop the raycasting, causing the system to detect the player stopped looking at the ender chest, causing the villager to be killed.
+        data modify storage iris:input TargetEntities set value false;
         data modify storage iris:input MaxRecursionDepth set value 10;
 
         // Begin raycast
         execute anchored eyes positioned ^ ^ ^ run function iris:get_target;
-
-        execute at @e[type=minecraft:marker, tag=iris.ray] run particle flame;
 
         // Check for colored ender chest
         execute at @e[type=minecraft:marker, tag=iris.ray] align xyz positioned ~.5 ~ ~.5 if block ~ ~ ~ minecraft:barrel if entity @e[tag=colored_ender_chests.ender_chest.marker,distance=..1] run {
@@ -244,31 +329,48 @@ class ender_chest {
 
             scoreboard players set $bandIdx __variable__ -1;
 
-            if ($cy>7600 && $cy<8399) {
+            if ($cy>7651 && $cy<8530) {
                 $bandIdx = 0;
-            } else if ($cy>6500 && $cy<7599) {
+            } else if ($cy>6740 && $cy<7650) {
                 $bandIdx = 1;
-            } else if ($cy>6000 && $cy<6499) {
+            } else if ($cy>5404 && $cy<6739) {
                 $bandIdx = 2;
             }
 
             // If any band was identified
             if ($cy > $_1) {
-                // Summon right-click detection
-                execute at @s positioned ^ ^ ^2 positioned ~ ~.5 ~ run {
-                    // TODO: Use an incrementing scoreboard to link player and villager together. Only spawn if there is no linked villager, kill all villagers who do not have a linked player (i.e. player left, died)
+                // Set looked_at_band to 2 so we can know when player stops looking at a band to remove the right-click detection. At the start of the next tick, it will decrease to 1. If at 1, right-click villager will be killed and the score will be set to 0 to prevent any further attempts to kill the villager.
+                scoreboard players set @s colored_ender_chests.looked_at_band 2;
 
-                    // summon villager ~ ~ ~ {
-                    //     Tags:[
-                    //         "colored_ender_chests",
-                    //         "colored_ender_chests.ender_chest",
-                    //         "colored_ender_chests.ender_chest.dye_right_click"
-                    //     ],
-                    //     NoAI:1b,
-                    //     Invulnerable:1b,
-                    //     Silent:1b,
-                    //     Trades:{}
-                    // }
+                // Summon right-click detection
+                execute run {
+                    // Search for any existing villagers
+                    function entity_link:entity_link/search;
+
+
+                    JMC.put("execute store result score $linked __variable__ run execute if entity @e[tag=entity_link.linked,tag=colored_ender_chests.ender_chest.dye_right_click]");
+                    if ($linked < 1) {
+                        execute at @s positioned ^ ^ ^.75 run summon villager ~ ~.5 ~ {
+                            Tags:[
+                                "colored_ender_chests",
+                                "colored_ender_chests.ender_chest",
+                                "colored_ender_chests.ender_chest.dye_right_click",
+                                "entity_link.init"
+                            ],
+                            Team: "colored_ender_chests.no_collision",
+                            NoAI:1b,
+                            Invulnerable:1b,
+                            Silent:1b,
+                            Trades:{}
+                        };
+                        function entity_link:entity_link/link;
+                    } else {
+                        execute at @s positioned ^ ^ ^.75 positioned ~ ~.5 ~ run  {
+                            function entity_link:entity_link/search;
+                            tp @e[tag=entity_link.linked] ^ ^ ^;
+                            function entity_link:entity_link/clean;
+                        }
+                    }
                 }
             }
 
@@ -280,24 +382,44 @@ class ender_chest {
 }
 
 function __tick__() {
-    // Invisible Minecarts
+    // If the item frame is placed down, place the ender chest
     execute as @e[
-            type=#minecraft:minecarts,
-            tag=!invisible_minecart
-            ]
-        run invisible_minecarts();
-
-    execute as @e[
-        type=item_frame,
-        tag=colored_ender_chests.ender_chest.item_frame
+        type=item_frame,nbt={Item:{id:"minecraft:item_frame",Count:1b,tag:{isFramedEnderChest:1b}}}
         ]
         at @s
         run ender_chest.place();
 
+    // If the barrel is missing (i.e. broken), remove the ender chest.
     JMC.put('execute as @e[tag=colored_ender_chests.ender_chest.marker] at @s unless block ~ ~-1 ~ barrel unless block ~ ~ ~ barrel unless block ~ ~1 ~ barrel run function colored_ender_chests:ender_chest/destroy');
 
+    // Remove 1 score of looked_at_band
+    scoreboard players remove @a[
+        scores={
+            colored_ender_chests.looked_at_band=2
+            }
+        ] colored_ender_chests.looked_at_band 1;
+    
+    // Check for dye. If player holds dye, run raycast().
+    // If the player is still looking at a band, looked_at_band will be reset to 2.
     execute
         as @a[gamemode=!spectator]
-        at @s unless entity @s[gamemode=adventure]
-        if entity @e[tag=colored_ender_chests.ender_chest.marker,distance=..6] run ender_chest.check_for_dye();
+        at @s unless entity @s[gamemode=adventure] run {
+            if (entity @e[tag=colored_ender_chests.ender_chest.marker,distance=..6]) {
+                ender_chest.check_for_dye();
+            }
+    }   
+    
+    // If player didn't look at a band above but did the previous tick, it will be 1. This means the player stopped looking. Now remove the right click detection.
+    execute as @a[scores={colored_ender_chests.looked_at_band=1}] run {
+        function entity_link:entity_link/search;
+        tp @e[
+                tag=entity_link.linked,
+                tag=colored_ender_chests.ender_chest.dye_right_click
+            ] 0 -1000 0;
+        kill @e[
+                tag=entity_link.linked,
+                tag=colored_ender_chests.ender_chest.dye_right_click
+            ];
+        scoreboard players reset @s colored_ender_chests.looked_at_band;
+    }
 }
